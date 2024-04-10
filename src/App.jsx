@@ -31,7 +31,7 @@ function App() {
 
   return  (
     isAuth ? (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-700">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-black">
         {room ? (
           <div>
             <Chat room={room} />
