@@ -72,7 +72,7 @@ function Chat(props) {
                 )}
                 <div>
                     <p className="text-lg font-bold">{auth.currentUser.displayName}</p>
-                    <p className="text-sm">{room.toUpperCase()}</p>
+                    <p className="text-sm">Room: {room.toUpperCase()}</p>
                 </div>
                 </div>
                 {/* You can add additional header content here if needed */}
