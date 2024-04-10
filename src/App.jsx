@@ -1,28 +1,47 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import './App.css'
 import Auth from './components/Auth'
 import Cookies from "universal-cookie"
-
+import Chat from './components/Chat'
+import { signOut } from 'firebase/auth'
+import { auth } from './firebase-config'
 const cookies = new Cookies()
 
 function App() {
-  const [isauth, setisauth] = useState(null)
-  const [room, setroom] = useState(null)
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"))
+  const [room, setRoom] = useState(null)
   const roomInputRef = useRef(null)
 
-  useEffect(() => {
-    setisauth(cookies.get("auth-token"))
-  }, [])
+  const handleEnterChat = () => {
+    const roomName = roomInputRef.current.value.trim()
+    if (roomName !== "") {
+      setRoom(roomName)
+    } else {
+      // Handle empty room name error
+      console.error("Room name cannot be empty")
+    }
+  }
 
-  return (
-    !isauth ? (
-      <div>
-        <Auth setisauth={setisauth}/>
-      </div>
-    ) : (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  const handleSignOut = async () =>{
+       await signOut(auth)
+       cookies.remove("auth-token")
+       setIsAuth(false)
+       setRoom(null)
+  }
+
+  return  (
+    isAuth ? (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-700">
         {room ? (
-          <div className="text-2xl font-bold text-blue-500">Chat</div>
+          <div>
+            <Chat room={room}/>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </div>
         ) : (
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
@@ -32,6 +51,7 @@ function App() {
               <input
                 type="text"
                 ref={roomInputRef}
+                defaultValue=""
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="room-name"
                 placeholder="Enter Room Name"
@@ -41,15 +61,21 @@ function App() {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
-                onClick={() => {
-                  setroom(roomInputRef.current.value);
-                }}
+                onClick={handleEnterChat}
               >
                 Enter Chat
               </button>
             </div>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4"
+              onClick={handleSignOut}
+            >Sign Out</button>
           </div>
         )}
+      </div>
+    ) : (
+      <div>
+        <Auth setIsAuth={setIsAuth}/>
       </div>
     )
   )
