@@ -34,7 +34,7 @@ function App() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-slate-700">
         {room ? (
           <div>
-            <Chat room={room}/>
+            <Chat room={room} />
             <button
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4"
               onClick={handleSignOut}
@@ -43,10 +43,10 @@ function App() {
             </button>
           </div>
         ) : (
-          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div className="bg-white shadow-md rounded-lg px-8 py-6 mb-4 flex flex-col items-center">
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room-name">
-                Enter room name
+              <label className="block text-gray-700  text-xl font-bold mb-2" htmlFor="room-name">
+                Enter room name to chat with others.
               </label>
               <input
                 type="text"
@@ -57,20 +57,23 @@ function App() {
                 placeholder="Enter Room Name"
               />
             </div>
-            <div className="flex items-center justify-between">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={handleEnterChat}
-              >
-                Enter Chat
-              </button>
-            </div>
             <button
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={handleEnterChat}
+            >
+              Enter Chat
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4 focus:outline-none focus:shadow-outline"
               onClick={handleSignOut}
-            >Sign Out</button>
+            >
+              Sign Out
+            </button>
           </div>
+
+        
+
         )}
       </div>
     ) : (
