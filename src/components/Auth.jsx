@@ -4,6 +4,7 @@ import {signInWithPopup} from "firebase/auth"
 import Cookies from "universal-cookie"
 import background from "../assets/background.jpg"
 import googleIcon from "../assets/google-icon.png"
+
 const cookies = new Cookies()
 
 
