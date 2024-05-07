@@ -46,7 +46,7 @@ function App() {
             <div className="bg-white shadow-md rounded-lg px-8 py-6 mb-4 flex flex-col items-center">
             <div className="mb-4">
               <label className="block text-gray-700  text-xl font-bold mb-2" htmlFor="room-name">
-                Enter room name to chat with others.
+                Enter room name to chat .
               </label>
               <input
                 type="text"
