@@ -67,11 +67,11 @@ function Chat(props) {
             {/* Header */}
             <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
                 <div className="flex items-center space-x-4">
-                {auth.currentUser.photoURL && (
-                    <img src={auth.currentUser.photoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
+                {  message.senderPhotoURL && (
+                    <img src={  message.senderPhotoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
                 )}
                 <div>
-                    <p className="text-lg font-bold">{auth.currentUser.displayName}</p>
+                    <p className="text-lg font-bold">{message.dispalyName}</p>
                     <p className="text-sm">Room: {room.toUpperCase()}</p>
                 </div>
                 </div>
