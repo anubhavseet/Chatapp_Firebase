@@ -64,19 +64,20 @@ function Chat(props) {
   return (
     <div className="flex flex-col h-full border rounded-lg overflow-hidden">
      
-            {/* Header */}
-            <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
-                <div className="flex items-center space-x-4">
-                {  message.senderPhotoURL && (
-                    <img src={  message.senderPhotoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
-                )}
-                <div>
-                    <p className="text-lg font-bold">{message.dispalyName}</p>
-                    <p className="text-sm">Room: {room.toUpperCase()}</p>
-                </div>
-                </div>
-                {/* You can add additional header content here if needed */}
-            </div>
+         {/* Header */}
+<div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
+  <div className="flex items-center space-x-4">
+    {message.senderPhotoURL && (
+      <img src={message.senderPhotoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
+    )}
+    <div>
+      <p className="text-lg font-bold">{message.displayName}</p>
+      <p className="text-sm">Room: {room.toUpperCase()}</p>
+    </div>
+  </div>
+  {/* You can add additional header content here if needed */}
+</div>
+
             {/* Rest of the Chat component */}
      
 
