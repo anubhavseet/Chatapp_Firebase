@@ -105,7 +105,7 @@ return (
             <p className="break-all">{message.text}</p>
             {message.attachment && (
               <a href={message.attachment} target="_blank" rel="noopener noreferrer" className="ml-2 text-white underline">
-                View Attachment
+                <img src={message.attachment} alt="Attachment" className="max-w-xs max-h-48 mt-2" />
               </a>
             )}
           </div>
