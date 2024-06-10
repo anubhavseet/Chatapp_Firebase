@@ -11,6 +11,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"))
   const [room, setRoom] = useState(null)
   const roomInputRef = useRef(null)
+  const passwordRef = useRef(null)
 
   const handleEnterChat = () => {
     const roomName = roomInputRef.current.value.trim()
@@ -55,6 +56,14 @@ function App() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="room-name"
                 placeholder="Enter Room Name"
+              />
+              <input
+                type="text"
+                ref={passwordref}
+                defaultValue=""
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                placeholder="Enter password"
               />
             </div>
             <button
