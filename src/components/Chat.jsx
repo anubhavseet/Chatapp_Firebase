@@ -15,6 +15,7 @@ const cookies = new Cookies()
 function Chat(props) {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [attachment,setAttachment] = useState(null)   
   const messageRef = collection(db, "messages"); // Corrected collection name
   const room = props.room;
   const password = props.password;   
