@@ -77,7 +77,7 @@ function Chat(props) {
   
  
 
-  return (
+return (
   <div className="flex flex-col h-full border rounded-lg overflow-hidden">
     {/* Header */}
     <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
@@ -98,10 +98,8 @@ function Chat(props) {
         <div key={message.id} className={`mb-4 ${message.user === auth.currentUser.displayName ? 'flex justify-end' : 'flex justify-start'}`}>
           <div className={`flex items-center max-w-xs px-4 py-2 rounded-lg shadow-md ${message.user === auth.currentUser.displayName ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
             {message.user === auth.currentUser.displayName ? (
-              // User message: Render user's photo URL
               auth.currentUser.photoURL && <img src={auth.currentUser.photoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
             ) : (
-              // Received message: Render sender's photo URL
               message.senderPhotoURL && <img src={message.senderPhotoURL} alt="Sender Icon" className="w-8 h-8 rounded-full mr-2" />
             )}
             <p className="break-all">{message.text}</p>
@@ -125,11 +123,14 @@ function Chat(props) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <input
-          type="file"
-          onChange={(e) => setAttachment(e.target.files[0])}
-          className="border rounded-lg py-2 px-4"
-        />
+        <label className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg cursor-pointer">
+          Attach
+          <input
+            type="file"
+            onChange={(e) => setAttachment(e.target.files[0])}
+            className="hidden"
+          />
+        </label>
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
           type="submit"
@@ -140,6 +141,7 @@ function Chat(props) {
     </form>
   </div>
 );
+
 
 }
 
