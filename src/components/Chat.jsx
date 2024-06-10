@@ -16,12 +16,14 @@ function Chat(props) {
   const [messages, setMessages] = useState([]);
   const messageRef = collection(db, "messages"); // Corrected collection name
   const room = props.room;
+  const password = props.password;    
  
 
   useEffect(() => {
     const queryMessages = query(
         messageRef,
         where("room", "==", room),
+        where("password", "==", password),
         orderBy("createdAt"));
   
     const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
@@ -44,8 +46,9 @@ function Chat(props) {
       text: message,
       createdAt: serverTimestamp(),
       room: props.room,
+      password: props.password,    
       user: auth.currentUser.displayName,
-      senderPhotoURL:auth.currentUser.photoURL,
+      senderPhotoURL: auth.currentUser.photoURL,
     };
 
     try {
