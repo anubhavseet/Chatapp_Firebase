@@ -104,7 +104,7 @@ return (
             )}
             <p className="break-all">{message.text}</p>
             {message.attachment && (
-              <a href={message.attachment} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 underline">
+              <a href={message.attachment} target="_blank" rel="noopener noreferrer" className="ml-2 text-white underline">
                 View Attachment
               </a>
             )}
