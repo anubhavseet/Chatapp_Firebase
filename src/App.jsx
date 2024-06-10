@@ -16,11 +16,13 @@ function App() {
 
   const handleEnterChat = () => {
     const roomName = roomInputRef.current.value.trim()
-    if (roomName !== "") {
+    const pswd = passwordInputRef.current.value.trim()
+    if (roomName !== "" && pswd !== "") {
       setRoom(roomName)
+      setPassword(pswd)
     } else {
       // Handle empty room name error
-      console.error("Room name cannot be empty")
+      console.error("Room name and password cannot be empty")
     }
   }
 
@@ -36,7 +38,7 @@ function App() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-black">
         {room ? (
           <div>
-            <Chat room={room} />
+            <Chat room={room} password={password} />
             <button
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4"
               onClick={handleSignOut}
@@ -70,6 +72,7 @@ function App() {
       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       id="password"
       placeholder="Enter Password"
+      
     />
   </div>
   <button
