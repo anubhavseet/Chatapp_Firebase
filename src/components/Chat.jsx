@@ -80,17 +80,36 @@ function Chat(props) {
 return (
   <div className="flex flex-col h-full border rounded-lg overflow-hidden">
     {/* Header */}
-    <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
-      <div className="flex items-center space-x-4">
-        {auth.currentUser.photoURL && (
-          <img src={auth.currentUser.photoURL} alt="User Icon" className="w-8 h-8 rounded-full mr-2" />
-        )}
-        <div>
-          <p className="text-lg font-bold">{auth.currentUser.displayName}</p>
-          <p className="text-sm">Room: {room.toUpperCase()}</p>
+  {/* Header */}
+<div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6 text-white">
+  <div className="flex items-center space-x-4">
+    <div>
+      <p className="text-lg font-bold">Room: {room.toUpperCase()}</p>
+      {/* Dropdown for users */}
+      <div className="relative">
+        <button className="text-sm text-gray-300 hover:text-white focus:outline-none">
+          Users
+          <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4zM2 12a2 2 0 100-4 2 2 0 000 4zm16 0a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+          </svg>
+        </button>
+        {/* Dropdown content */}
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10 hidden">
+          <div className="py-1">
+            {/* Map through users and display them */}
+            {users.map((user) => (
+              <p key={user.id} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white">
+                {user.displayName}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  {/* You can add additional header content here if needed */}
+</div>
+
 
     {/* Chat Messages */}
     <div className="flex-1 overflow-y-auto px-4 py-6">
